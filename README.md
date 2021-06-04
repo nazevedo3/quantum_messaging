@@ -2,7 +2,7 @@
 
 # Welcome to Quantum Messaging!
 
-Quantum Messaging is the first public application that runs on pure quantum computers....just kidding.  It's just a simple REST API that does two things.  The first being it will take a message in the request body and return the sha256 hash.  You can then to a GET request, provide the sha256 hash and it will retrieve the associated message.  Please see below for the API end points along with some examples.
+Quantum Messaging is the first public application that runs on pure quantum computers....just kidding.  It's just a simple REST API that does two things.  The first being it will take a message in the request body and return the sha256 hash.  You can then do a GET request, provide the sha256 hash and it will retrieve the associated message.  Please see below for the API end points along with some examples.
 
 ## REST API ENDPOINTS
 | Endpoint        | Method           
