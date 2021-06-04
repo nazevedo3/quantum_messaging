@@ -20,7 +20,7 @@ curl -d 'this is a test' -X POST  <server-IP>:4000/api/message
 {"hash":"2e99758548972a8e8822ad47fa1017ff72f06f3ff6a016851f45c398732bc50c"}
 ```
 
-### Example #2 - Retreiving a message from the assoiciated hash
+#### Example #2 - Retreiving a message from the assoiciated hash
 ```sh
 curl <server-IP>:4000/api/hash/2e99758548972a8e8822ad47fa1017ff72f06f3ff6a016851f45c398732bc50c
 {"message":"this is a test"}
