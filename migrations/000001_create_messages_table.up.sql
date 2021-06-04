@@ -3,3 +3,6 @@ CREATE TABLE IF NOT EXISTS messages (
     message text NOT NULL UNIQUE,
     hash text GENERATED ALWAYS AS (encode(sha256(message::bytea), 'hex')) STORED
 );
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
