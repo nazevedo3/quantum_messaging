@@ -44,7 +44,7 @@ func (app *application) createMessageHandler(w http.ResponseWriter, r *http.Requ
 		return
 	}
 	// use the writeJSON helper to send the response back to the user
-	err = app.writeJSON(w, http.StatusCreated, clientResponse{"hash": message.Hash}, nil)
+	err = app.writeJSON(w, http.StatusCreated, clientResponse{"hash": string(message.Hash)}, nil)
 	if err != nil {
 		app.serverErrorResponse(w, r, err)
 	}

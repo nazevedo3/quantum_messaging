@@ -1,17 +1,15 @@
-FROM golang:1.16 as construct
+FROM golang:alpine as builder
 
-COPY go.mod go.sum /go/src/github.com/nazevedo3/quantum_messaging/
-WORKDIR /go/src/github.com/nazevedo3/quantum_messaging
-RUN go mod download
-COPY . /go/src/github.com/nazevedo3/quantum_messaging
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o build/quantum_messaging github.com/nazevedo3/quantum_messaging
+WORKDIR /app 
 
+COPY . .
 
-FROM alpine
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" ./cmd/api
 
-RUN apk add --no-cache ca-certificates && update-ca-certificates
-COPY --from=construct /go/src/github.com/nazevdo3/quantum_messaging/build/quantum_messaging /usr/bin/quantum_messaging
+FROM busybox
 
-EXPOSE 8080 8080
+WORKDIR /app
 
-ENTRYPOINT ["/usr/bin/quantum_messaging"]
+COPY --from=builder /app/api /usr/bin/rigetti
+
+ENTRYPOINT ["/usr/bin/rigetti"]

@@ -48,6 +48,7 @@ func (m MessageModel) Get(hash string) (*Message, error) {
 		&message.Message,
 		&message.Hash,
 	)
+
 	if err != nil {
 		switch {
 		case errors.Is(err, sql.ErrNoRows):
